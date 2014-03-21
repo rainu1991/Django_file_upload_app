@@ -1,0 +1,16 @@
+from django.conf.urls.defaults import patterns, url
+from views import welcome,welcomes,list,lists,loadPage
+
+urlpatterns = patterns('businessapp.views',
+    url(r'^welcome/$','welcome', name='welcome'),
+    url(r'^list/$', 'list', name='list'),
+#    url(r'^welcome/$','welcome', name='welcome'),
+    url(r'^welcome/list.html$','welcomes', name='welcomes'),
+#    url(r'^welcome/list1.html$','welcomess', name='welcomess'),
+    url(r'^welcome/list1.html$','lists', name='lists'),	
+#    url(r'^2014/03/18/hello.py$','loadPage', name='loadPage'),
+#     url(r'^2014/03/18/(?P<file_name>[\w.]{0,256})$','loadPage', name='loadPage'),
+#     url(r'^\d{1,4}/\d{1,2}/\d{1,2}/(?P<file_name>[\w.]{0,256})$','loadPage', name='loadPage'),
+    url(r'^(?P<file_name>[\w.]{0,256})$','loadPage', name='loadPage'),
+    		
+)

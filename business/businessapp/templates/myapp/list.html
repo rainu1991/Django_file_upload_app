@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% block content %}
+		<!-- List of uploaded documents -->
+		{% if documents %}
+			<ul>
+			{% for document in documents %}
+				<font color="red">ID:{{ document.id }}</font>
+				<li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+				
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No documents.</p>
+		{% endif %}
+
+		<!-- Upload form. Note enctype attribute! -->
+		<form action="{% url list %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<p>{{ form.non_field_errors }}</p>
+			<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+			<p>
+				{{ form.docfile.errors }}
+				{{ form.docfile }}
+			</p>
+			<p><input type="submit" value="Upload" /></p>
+		</form>
+		
+	</body>
+	{% load static %} 
+	<label id="imagelabel">ID value </label>
+        <input id="imagename" name="imagename"> 
+        <input id="load" type=button value="Disable" > 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+ <script>
+ 
+load.addEventListener('click', loadimage, false);
+ 
+ function loadimage(){
+if(imagename.value=="")
+alert("Image name cannot be empty");
+else{
+
+document.location.href="/myapp/"+imagename.value;
+
+}
+}
+</script>
+ 	
+{% endblock %}
+

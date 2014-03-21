@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+{% block content %}
+		 <font color="Brown"><b><u>List of uploaded documents:</font></b></u> 
+		{% if documents %}
+			<ul>
+			{% for document in documents %}
+				<li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>No documents.</p>
+		{% endif %}
+
+{% endblock %}
